@@ -1,12 +1,24 @@
-# React + Vite
+# 💬 PurposeChat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PurposeChat** es una práctica personal de nivel junior. Es una mini web sencilla, tipo chatbot que responde a una preocupación sobre el estado del mundo con datos reales que invitan a la reflexión. Nace de mi interés por la **tecnología con propósito**. Pretende mostrar que el progreso humano también se puede contar con datos.
 
-Currently, two official plugins are available:
+## 💡 Tecnologías utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** (con Vite): para construir la interfaz de usuario.
+- **JavaScript**: para manejar estado y lógica conversacional.
+- **HTML + CSS**: para crear una experiencia visual tipo chat.
+- **React Router**: para organizar la navegación.
+- **JSON local**: para simular respuestas desde una API.
+- **Git y GitHub Pages**: para versionar y desplegar el proyecto.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Deploy
+
+Este proyecto está preparado para desplegarse en GitHub Pages. El comando `npm run deploy` genera la build y la sube a la carpeta `/docs`, desde donde se sirve la app.
+
+---
+
+## 📌 Nota
+
+Este proyecto es solo una pequeña práctica personal.
