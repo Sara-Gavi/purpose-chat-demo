@@ -9,7 +9,7 @@ function ChatPage() {
   const [currentStep, setCurrentStep] = useState(0);
   // Nuevo estado para mostrar los puntitos de "escribiendo"
   const [isTyping, setIsTyping] = useState(false);
-  //Codigo preparado para scroll
+  //Codigo preparado para scroll (copiado de la mini guía)
   const lastMessageRef = useRef(null);
 
   //Al iniciar cargamos las frases desde frases.json
