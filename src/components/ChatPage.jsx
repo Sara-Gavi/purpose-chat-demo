@@ -5,6 +5,13 @@ import logoApp from "../images/logo_app.png";
 function ChatPage() {
   //Caja vacía paraguardar las frases que vengan del JSON
   const [messages, setMessages] = useState([]);
+  // Guardamos cuántos mensajes mostrar (empezamos por el primero)
+  const [currentStep, setCurrentStep] = useState(0);
+  // Nuevo estado para mostrar los puntitos de "escribiendo"
+  const [isTyping, setIsTyping] = useState(false);
+  //Codigo preparado para scroll
+  const lastMessageRef = useRef(null);
+
   //Al iniciar cargamos las frases desde frases.json
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}frases.json`)
@@ -17,17 +24,20 @@ function ChatPage() {
     console.log(messages); // compruebo si las frases llegan bien
   }, [messages]);
 
-  // Guardamos cuántos mensajes mostrar (empezamos por el primero)
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const lastMessageRef = useRef(null);
-
   // Mostramos solo los mesnajes hasta el paso actual
   const visibleMessages = messages.slice(0, currentStep + 1);
 
-  // Función que avanza al siguiente mensaje
+  // Función que avanza al siguiente mensaje, modificada para que aparezcan los puntitos de "escribiendo"
   function handleNextClick() {
-    setCurrentStep(currentStep + 1);
+    if (currentStep === 0) {
+      setIsTyping(true);
+      setTimeout(() => {
+        setIsTyping(false);
+        setCurrentStep(currentStep + 1);
+      }, 1500); // 1.5 segundos de espera
+    } else {
+      setCurrentStep(currentStep + 1); //como sería la funcion simple
+    }
   }
 
   useEffect(() => {
@@ -56,9 +66,13 @@ function ChatPage() {
             </div>
           );
         })}
+        {/* ¡CAMBIO! mostrar burbuja con ... escribiendo */}
+        {isTyping && (
+          <div className="chat__bubble chat__bot chat__typing">...</div>
+        )}
 
-        {/* Si quedan mensajes por mostrar, aparece el botón */}
-        {currentStep < messages.length - 1 && (
+        {/* Botón para avanzar si quedan mensajes */}
+        {!isTyping && currentStep < messages.length - 1 && (
           <button className="chat__button" onClick={handleNextClick}>
             Conocer más
           </button>

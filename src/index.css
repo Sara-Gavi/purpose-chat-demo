@@ -197,3 +197,9 @@
 .chat__logo:hover {
   transform: scale(1.1);
 }
+
+/*IDEA FINAL DE ... ESCRIBIENDO*/
+.chat__typing {
+  font-style: italic;
+  opacity: 0.6;
+}
