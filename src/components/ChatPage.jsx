@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import logoApp from "../images/logo_app.png";
 
 function ChatPage() {
   //Caja vacía paraguardar las frases que vengan del JSON
@@ -18,7 +20,7 @@ function ChatPage() {
   // Guardamos cuántos mensajes mostrar (empezamos por el primero)
   const [currentStep, setCurrentStep] = useState(0);
 
-  // Mostramos solo los mensajes hasta el paso actual
+  // Mostramos solo los mesnajes hasta el paso actual
   const visibleMessages = messages.slice(0, currentStep + 1);
 
   // Función que avanza al siguiente mensaje
@@ -46,6 +48,18 @@ function ChatPage() {
           <button className="chat__button" onClick={handleNextClick}>
             Conocer más
           </button>
+        )}
+        {/* Logito al final como enlace de regreso a la Landing */}
+        {currentStep === messages.length - 1 && messages.length > 0 && (
+          <div className="chat__logo-end">
+            <Link to="/">
+              <img
+                src={logoApp}
+                alt="Volver al inicio"
+                className="chat__logo"
+              />
+            </Link>
+          </div>
         )}
       </div>
     </main>
