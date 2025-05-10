@@ -11,6 +11,10 @@ function ChatPage() {
       .catch((error) => console.error("Error al cargar las frases:", error));
   }, []);
 
+  useEffect(() => {
+    console.log(messages); // compruebo si las frases llegan bien
+  }, [messages]);
+
   // Guardamos cuántos mensajes mostrar (empezamos por el primero)
   const [currentStep, setCurrentStep] = useState(0);
 
