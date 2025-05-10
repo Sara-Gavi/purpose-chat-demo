@@ -58,7 +58,7 @@
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  color: #004b84;
+  color: #ffffff;
   font-size: 1.6rem;
   font-weight: 600;
   font-family: "Fredoka", sans-serif;
@@ -69,6 +69,7 @@
 
 .button__cta:hover {
   background-color: #f8b286;
+  color: #004b84;
 }
 
 /* MOVIL */
