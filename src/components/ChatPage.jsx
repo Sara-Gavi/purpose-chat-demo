@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import logoApp from "../images/logo_app.png";
 
@@ -20,6 +20,8 @@ function ChatPage() {
   // Guardamos cuántos mensajes mostrar (empezamos por el primero)
   const [currentStep, setCurrentStep] = useState(0);
 
+  const lastMessageRef = useRef(null);
+
   // Mostramos solo los mesnajes hasta el paso actual
   const visibleMessages = messages.slice(0, currentStep + 1);
 
@@ -28,6 +30,12 @@ function ChatPage() {
     setCurrentStep(currentStep + 1);
   }
 
+  useEffect(() => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [currentStep]);
+
   return (
     <main className="chat">
       <div className="chat__container">
@@ -35,9 +43,15 @@ function ChatPage() {
         {visibleMessages.map((message, index) => {
           const bubbleClass =
             message.from === "user" ? "chat__user" : "chat__bot";
+          // Solo el último mensaje visible tendrá la referencia
+          const isLast = index === visibleMessages.length - 1;
 
           return (
-            <div key={index} className={`chat__bubble ${bubbleClass}`}>
+            <div
+              key={index}
+              className={`chat__bubble ${bubbleClass}`}
+              ref={isLast ? lastMessageRef : null}
+            >
               {message.text}
             </div>
           );
