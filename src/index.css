@@ -1,68 +1,117 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+/* LANDING */
+
+.hero {
+  background-image: url("./images/nature_image.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-button {
+.content__logo {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 3rem;
+}
+
+.content__slogan {
+  font-family: "Fredoka", sans-serif;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #004b84;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-transform: none;
+  margin-top: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+.content__button {
+  margin-top: 2rem;
+}
+
+.button__cta {
+  background-color: #ff7f30;
+  padding: 0.8rem 1.8rem;
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  border: none;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: #004b84;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-family: "Fredoka", sans-serif;
+  letter-spacing: 1.2px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+.button__cta:hover {
+  background-color: #f8b286;
+}
+
+/* MOVIL */
+@media (max-width: 767px) {
+  .hero__content {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 2rem;
   }
-  a:hover {
-    color: #747bff;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  .hero__content {
+    padding: 0 4rem;
   }
-  button {
-    background-color: #f9f9f9;
+
+  .content__logo {
+    width: 200px;
+  }
+
+  .content__slogan {
+    font-size: 2.3rem;
+    margin: 0 2rem;
+  }
+
+  .button__cta {
+    font-size: 2rem;
+    padding: 1rem 2.5rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1200px) {
+  .content__logo {
+    width: 250px;
+  }
+
+  .content__slogan {
+    font-size: 2.5rem;
+  }
+
+  .button__cta {
+    padding: 1.2rem 3rem;
   }
 }
