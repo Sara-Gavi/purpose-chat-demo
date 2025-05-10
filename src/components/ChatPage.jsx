@@ -1,20 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function ChatPage() {
+  //Caja vacía paraguardar las frases que vengan del JSON
+  const [messages, setMessages] = useState([]);
+  //Al iniciar cargamos las frases desde frases.json
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}frases.json`)
+      .then((res) => res.json())
+      .then((data) => setMessages(data))
+      .catch((error) => console.error("Error al cargar las frases:", error));
+  }, []);
+
   // Guardamos cuántos mensajes mostrar (empezamos por el primero)
   const [currentStep, setCurrentStep] = useState(0);
-  // Simulamos una conversación para maquetar
-  // Mensajes simulados: uno del usuario y uno del bot
-  const messages = [
-    {
-      from: "user",
-      text: "Me preocupa que como humanidad no estemos a la altura del cambio que necesitamos.",
-    },
-    {
-      from: "bot",
-      text: "A veces no lo parece, pero hay información que nos dice que vamos por buen camino.",
-    },
-  ];
 
   // Mostramos solo los mensajes hasta el paso actual
   const visibleMessages = messages.slice(0, currentStep + 1);
