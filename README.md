@@ -10,6 +10,7 @@
 - **React Router**: para organizar la navegación.
 - **JSON local**: para simular respuestas desde una API.
 - **Git y GitHub Pages**: para versionar y desplegar el proyecto.
+- **Flujo de ramas con Git**: para trabajar con entornos separados de desarrollo.
 
 ---
 
