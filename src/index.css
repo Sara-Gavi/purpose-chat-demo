@@ -178,3 +178,21 @@
 .chat__button:hover {
   background-color: #f8b286;
 }
+
+/* CHAT-LOGO*/
+.chat__logo-end {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.chat__logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.chat__logo:hover {
+  transform: scale(1.1);
+}
