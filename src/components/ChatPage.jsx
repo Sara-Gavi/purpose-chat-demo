@@ -1,9 +1,11 @@
 import { useState } from "react";
 
 function ChatPage() {
-  const [step, setStep] = useState(0); // empezamos desde 0
+  // Guardamos cuántos mensajes mostrar (empezamos por el primero)
+  const [currentStep, setCurrentStep] = useState(0);
   // Simulamos una conversación para maquetar
-  const conversation = [
+  // Mensajes simulados: uno del usuario y uno del bot
+  const messages = [
     {
       from: "user",
       text: "Me preocupa que como humanidad no estemos a la altura del cambio que necesitamos.",
@@ -14,12 +16,36 @@ function ChatPage() {
     },
   ];
 
+  // Mostramos solo los mensajes hasta el paso actual
+  const visibleMessages = messages.slice(0, currentStep + 1);
+
+  // Función que avanza al siguiente mensaje
+  function handleNextClick() {
+    setCurrentStep(currentStep + 1);
+  }
+
   return (
     <main className="chat">
-      <section className="chat__container">
-        {/* Aquí se mostrará la conversación cargada desde JSON */}
-        <p>Cargando conversación...</p>
-      </section>
+      <div className="chat__container">
+        {/* Recorremos los mensajes visibles y los mostramos en pantalla */}
+        {visibleMessages.map((message, index) => {
+          const bubbleClass =
+            message.from === "user" ? "chat__user" : "chat__bot";
+
+          return (
+            <div key={index} className={`chat__bubble ${bubbleClass}`}>
+              {message.text}
+            </div>
+          );
+        })}
+
+        {/* Si quedan mensajes por mostrar, aparece el botón */}
+        {currentStep < messages.length - 1 && (
+          <button className="chat__button" onClick={handleNextClick}>
+            Conocer más
+          </button>
+        )}
+      </div>
     </main>
   );
 }
